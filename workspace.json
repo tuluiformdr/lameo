@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "api": "apps/api",
     "lame": "apps/lame",
     "lame-e2e": "apps/lame-e2e"
   }
