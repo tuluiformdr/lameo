@@ -1,0 +1,28 @@
+{
+  "root": "apps/lame-e2e",
+  "sourceRoot": "apps/lame-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/lame-e2e/cypress.json",
+        "devServerTarget": "lame:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "lame:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/lame-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["lame"]
+}

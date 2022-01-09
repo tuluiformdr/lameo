@@ -1,0 +1,70 @@
+{
+  "root": "apps/lame",
+  "sourceRoot": "apps/lame/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/lame",
+        "index": "apps/lame/src/index.html",
+        "baseHref": "/",
+        "main": "apps/lame/src/main.tsx",
+        "polyfills": "apps/lame/src/polyfills.ts",
+        "tsConfig": "apps/lame/tsconfig.app.json",
+        "assets": ["apps/lame/src/favicon.ico", "apps/lame/src/assets"],
+        "styles": ["apps/lame/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/lame/src/environments/environment.ts",
+              "with": "apps/lame/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "lame:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "lame:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/lame/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/lame"],
+      "options": {
+        "jestConfig": "apps/lame/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
