@@ -1,11 +1,10 @@
-import styles from './app.module.css';
-import NxWelcome from './nx-welcome';
+import { TextField } from '@mui/material';
 
 export function App() {
   return (
     <>
-      <NxWelcome title="lame" />
-      <div />
+      <h1>Please enter a text</h1>
+      <TextField />
     </>
   );
 }
